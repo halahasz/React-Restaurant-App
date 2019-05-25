@@ -1,11 +1,10 @@
 import React from "react";
 import MenuItem from "./MenuItem ";
 import "./MenuWrapper.css";
-import { menuItems } from "../../data/menuItems";
 
-const MenuWrapper = () => (
+const MenuWrapper = (props) => (
   <ul className="menuWrapper__wrapper">
-    {menuItems.map(item => (
+    {props.items.map(item => (
       <MenuItem key={item.name} {...item} />
     ))}
   </ul>
