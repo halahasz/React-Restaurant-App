@@ -1,19 +1,19 @@
 import React from "react";
-import "./MenuItem.css";
+import styles from "./MenuItem.module.scss";
 import PropTypes from "prop-types";
 
 const MenuItem = ({ image, name, price, ingredients }) => (
-  <li className="menuItem__wrapper">
-    <img className="menuItem__image" src={image} alt={name} />
+  <li className={styles.wrapper}>
+    <img className={styles.image} src={image} alt={name} />
     <div>
-      <h2 className="menuItem__title">
+      <h2 className={styles.menuItem__title}>
         {name}
-        <span className="menuItem__price">
-          <span className="menuItem__dots"> . . . . . </span>
+        <span className={styles.menuItem__price}>
+          <span className={styles.menuItem__dots}> . . . . . </span>
           {price}
         </span>
       </h2>
-      <p className="menuItem__ingredients">{ingredients}</p>
+      <p className={styles.menuItem__ingredients}>{ingredients}</p>
     </div>
   </li>
 );

@@ -1,11 +1,11 @@
-.menuItem__wrapper {
+.wrapper {
   list-style: none;
   margin: 0 ;
   display: flex;
   align-items: center;
   padding: 30px;
 }
-.menuItem__image {
+.image {
   flex-shrink: 0;
   object-fit: cover;
   margin-right: 30px;
