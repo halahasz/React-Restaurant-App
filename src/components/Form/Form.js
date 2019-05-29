@@ -12,6 +12,7 @@ const Form = ({submitFn}) => (
           name="name"
           id="name"
           placeholder=" "
+          required
           maxLength="30"
           autocomplete="off"
         />
@@ -27,6 +28,7 @@ const Form = ({submitFn}) => (
           name="price"
           id="price"
           placeholder=" "
+          required
           autocomplete="off"
         />
         <label className={styles.label} htmlFor="link">
@@ -54,6 +56,7 @@ const Form = ({submitFn}) => (
           name="description"
           id="description"
           placeholder=" "
+          required
           autocomplete="off"
         />
         <label className={styles.label} htmlFor="description">

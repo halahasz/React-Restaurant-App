@@ -38,8 +38,8 @@ class App extends React.Component {
 
     const newItem = {
       name: e.target[0].value,
-      image: e.target[1].value,
-      price: e.target[2].value,
+      price: e.target[1].value,
+      image: e.target[2].value,
       ingredients: e.target[3].value
     };
 
