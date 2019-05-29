@@ -8,7 +8,7 @@ const MenuItem = ({ image, name, price, ingredients }) => {
   
   return (
     <li className={styles.wrapper}>
-      <ImageTag className={styles.image} src={image} alt={name} />
+      <ImageTag className={image ? styles.image : styles.imageNone} src={image} alt={name} />
       <div>
         <h2 className={styles.menuItem__title}>
           {name}

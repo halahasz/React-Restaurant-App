@@ -1,72 +1,18 @@
-import React from 'react';
+import React from "react";
 import styles from "./Form.module.scss";
+import Input from "../Input/Input";
 
-const Form = ({submitFn}) => (
+const Form = ({ submitFn }) => (
   <div className={styles.wrapper}>
     <h2>Add new menu item</h2>
-    <form className={styles.form} onSubmit={submitFn}>
-      <div className={styles.formItem}>
-        <input
-          className={styles.input}
-          type="text"
-          name="name"
-          id="name"
-          placeholder=" "
-          required
-          maxLength="30"
-          autocomplete="off"
-        />
-        <label className={styles.label} htmlFor="name">
-          Name
-        </label>
-        <div className={styles.formItemBar} />
-      </div>
-      <div className={styles.formItem}>
-        <input
-          className={styles.input}
-          type="text"
-          name="price"
-          id="price"
-          placeholder=" "
-          required
-          autocomplete="off"
-        />
-        <label className={styles.label} htmlFor="link">
-          Price
-        </label>
-        <div className={styles.formItemBar} />
-      </div>
-      <div className={styles.formItem}>
-        <input
-          className={styles.input}
-          type="text"
-          name="image"
-          id="image"
-          placeholder=" "
-          autocomplete="off"
-        />
-        <label className={styles.label} htmlFor="image">
-          Image
-        </label>
-        <div className={styles.formItemBar} />
-      </div>
-      <div className={styles.formItem}>
-        <textarea
-          className={styles.textarea}
-          name="description"
-          id="description"
-          placeholder=" "
-          required
-          autocomplete="off"
-        />
-        <label className={styles.label} htmlFor="description">
-          Ingredients
-        </label>
-        <div className={styles.formItemBar} />
-      </div>
+    <form autoComplete="off" className={styles.form} onSubmit={submitFn}>
+      <Input name="name" label="Name" maxLength={30} />
+      <Input name="price" label='Price' />
+      <Input name="image" label="Image" />
+      <Input tag = 'textarea' name="ingredients" label="Ingredients" />
       <button className={styles.button}>add new item</button>
     </form>
   </div>
-)
+);
 
 export default Form;
