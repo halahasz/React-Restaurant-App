@@ -24,7 +24,7 @@ export default Input;
 
 Input.propTypes = {
   tag: PropTypes.string,
-  name: PropTypes.string.isRequired,
+  name: PropTypes.string,
   label: PropTypes.string.isRequired,
   maxLength: PropTypes.string
 };
