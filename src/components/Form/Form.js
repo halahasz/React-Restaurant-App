@@ -1,16 +1,18 @@
 import React from "react";
 import styles from "./Form.module.scss";
 import Input from "../Input/Input";
+import Button from "../Button/Button";
+import Title from "../Title/Title";
 
 const Form = ({ submitFn }) => (
   <div className={styles.wrapper}>
-    <h2>Add new menu item</h2>
+    <Title>Add new menu item</Title>
     <form autoComplete="off" className={styles.form} onSubmit={submitFn}>
       <Input name="name" label="Name" maxLength={30} />
-      <Input name="price" label='Price' />
+      <Input name="price" label="Price" />
       <Input name="image" label="Image" />
-      <Input tag = 'textarea' name="ingredients" label="Ingredients" />
-      <button className={styles.button}>add new item</button>
+      <Input tag="textarea" name="ingredients" label="Ingredients" />
+      <Button>add new item</Button>
     </form>
   </div>
 );
