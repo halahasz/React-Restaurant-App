@@ -1,7 +1,10 @@
 import React from "react";
-import MenuWrapper from "./components/ListWrapper/MenuWrapper";
 import "./index.css";
-import Form from "./components/Form/Form";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import MenuPage from "../MenuPage/MenuPage";
+import NewsPage from "../NewsPage/NewsPage";
+import GalleryPage from "../GalleryPage/GalleryPage";
+import Navigation from "../../components/Navigation/Navigation";
 
 const initialStateItems = [
   {
@@ -28,7 +31,7 @@ const initialStateItems = [
   }
 ];
 
-class App extends React.Component {
+class HomePage extends React.Component {
   state = {
     items: [...initialStateItems]
   };
@@ -52,12 +55,20 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="App">
-        <MenuWrapper items={this.state.items} />
-        <Form submitFn={this.addItem} />
-      </div>
+      <BrowserRouter>
+        <>
+          <Navigation />
+          <h1>Hello World!</h1>
+          <Switch>
+            <Route exact path="/" component={MenuPage} />
+            <Route path="/menu" component={MenuPage} />
+            <Route path="/news" component={NewsPage} />
+            <Route path="/gallery" component={GalleryPage} />
+          </Switch>
+        </>
+      </BrowserRouter>
     );
   }
 }
 
-export default App;
+export default HomePage;
