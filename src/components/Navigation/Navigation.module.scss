@@ -1,0 +1,16 @@
+.wrapper {
+  display: grid;
+  grid-template-columns:  repeat(4, 1fr);
+}
+.navItem {
+  list-style: none;
+  &Link {
+    text-decoration: none;
+    color: #818181;
+    text-transform: uppercase;
+    &Active {
+      font-weight: 700;
+      color: #a8b15b;
+    }
+  }
+}

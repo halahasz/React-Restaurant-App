@@ -1,9 +1,11 @@
 import React from "react";
+import "./index.css";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import MenuPage from "../MenuPage/MenuPage";
-import NewsPage from "../NewsPage/NewsPage";
-import GalleryPage from "../GalleryPage/GalleryPage";
-import Navigation from "../../components/Navigation/Navigation";
+import HomePage from "./pages/HomePage/HomePage";
+import MenuPage from "./pages/MenuPage/MenuPage";
+import NewsPage from "./pages/NewsPage/NewsPage";
+import GalleryPage from "./pages/GalleryPage/GalleryPage";
+import Navigation from "./components/Navigation/Navigation";
 
 const initialStateItems = [
   {
@@ -30,7 +32,7 @@ const initialStateItems = [
   }
 ];
 
-class HomePage extends React.Component {
+class App extends React.Component {
   state = {
     items: [...initialStateItems]
   };
@@ -54,9 +56,20 @@ class HomePage extends React.Component {
 
   render() {
     return (
-     <p>Homepage</p>
+      <BrowserRouter>
+        <>
+          <Navigation />
+          <h1>Hello World!</h1>
+          <Switch>
+            <Route exact path="/" component={HomePage} />
+            <Route path="/menu" component={MenuPage} />
+            <Route path="/news" component={NewsPage} />
+            <Route path="/gallery" component={GalleryPage} />
+          </Switch>
+        </>
+      </BrowserRouter>
     );
   }
 }
 
-export default HomePage;
+export default App;
