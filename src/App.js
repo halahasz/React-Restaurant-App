@@ -5,7 +5,7 @@ import HomePage from "./pages/HomePage/HomePage";
 import MenuPage from "./pages/MenuPage/MenuPage";
 import NewsPage from "./pages/NewsPage/NewsPage";
 import GalleryPage from "./pages/GalleryPage/GalleryPage";
-import Navigation from "./components/Navigation/Navigation";
+import Header from "./components/Header/Header";
 
 const initialStateItems = [
   {
@@ -58,7 +58,7 @@ class App extends React.Component {
     return (
       <BrowserRouter>
         <>
-          <Navigation />
+          <Header />
           <h1>Hello World!</h1>
           <Switch>
             <Route exact path="/" component={HomePage} />

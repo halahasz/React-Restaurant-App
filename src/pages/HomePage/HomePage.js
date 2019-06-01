@@ -1,9 +1,4 @@
 import React from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
-import MenuPage from "../MenuPage/MenuPage";
-import NewsPage from "../NewsPage/NewsPage";
-import GalleryPage from "../GalleryPage/GalleryPage";
-import Navigation from "../../components/Navigation/Navigation";
 
 const initialStateItems = [
   {
