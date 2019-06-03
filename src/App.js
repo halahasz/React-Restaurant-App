@@ -6,6 +6,7 @@ import MenuPage from "./pages/MenuPage/MenuPage";
 import NewsPage from "./pages/NewsPage/NewsPage";
 import GalleryPage from "./pages/GalleryPage/GalleryPage";
 import Header from "./components/Header/Header";
+import Modal from "./components/Modal/Modal";
 
 const initialStateItems = [
   {
@@ -66,6 +67,7 @@ class App extends React.Component {
             <Route path="/news" component={NewsPage} />
             <Route path="/gallery" component={GalleryPage} />
           </Switch>
+          <Modal />
         </>
       </BrowserRouter>
     );
