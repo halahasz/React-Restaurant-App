@@ -35,7 +35,8 @@ const initialStateItems = [
 
 class App extends React.Component {
   state = {
-    items: [...initialStateItems]
+    items: [...initialStateItems],
+    isModalOpen: false
   };
 
   addItem = e => {
@@ -55,11 +56,24 @@ class App extends React.Component {
     e.target.reset();
   };
 
+  openModal = () => {
+    this.setState({
+      isModalOpen: true
+    });
+  };
+
+  closeModal = () => {
+    this.setState({
+      isModalOpen: false
+    });
+  };
+
   render() {
+    const { isModalOpen } = this.state;
     return (
       <BrowserRouter>
         <>
-          <Header />
+          <Header openModalFn={this.openModal} />
           <h1>Hello World!</h1>
           <Switch>
             <Route exact path="/" component={HomePage} />
@@ -67,7 +81,7 @@ class App extends React.Component {
             <Route path="/news" component={NewsPage} />
             <Route path="/gallery" component={GalleryPage} />
           </Switch>
-          <Modal />
+          {isModalOpen && <Modal closeModalFn={this.closeModal} />}
         </>
       </BrowserRouter>
     );

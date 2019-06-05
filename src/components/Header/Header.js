@@ -4,11 +4,11 @@ import styles from "./Header.module.scss";
 import logoImage from '../../assets/img/logo.png';
 import Button from '../Button/Button'
 
-const Header = () => (
+const Header = ({openModalFn}) => (
   <header className={styles.wrapper}>
     <img className={styles.logo} src={logoImage} alt="Hummos logo"/>
     <HeaderNavigation />
-    <Button secondary>new item</Button>
+    <Button onClick={openModalFn} secondary>new item</Button>
   </header>
 );
 
