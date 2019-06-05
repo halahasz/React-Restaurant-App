@@ -6,8 +6,56 @@
   left: 0;
   margin: 0 auto;
   width: 450px;
-  height: 550px;
+  height: 570px;
   background: url('../../assets/img/modal_bg.jpg');
   background-size: cover;
   box-shadow: 0 10px 40px -15px rgba(#818181, .9);
+}
+.closeButton {
+  width: 27px;
+  height: 27px;
+  background: #6e774a;
+  border: none; 
+  position: absolute;
+  right: 30px;
+  top: 20px;
+  border: 2px solid #6e774a;
+  cursor: pointer;
+  transition: all .2s ease;
+  &:active,
+  &:focus {
+    outline: none;
+    box-shadow:  0 0 5px #a8b15b;
+  }
+  &:hover {
+    background-color: transparent;
+  }
+  &::before, 
+  &::after {
+    content: '';
+    width: 16px;
+    height: 2px;
+    position: absolute;
+    background: white;
+    display: block;
+    top: 48%;
+    transform: translateY(-70%);
+    left: 0;
+    right: 0;
+    bottom: 0px;
+    margin: 0 auto;
+    transform-origin: center;
+    transition: all .2s ease;
+  }
+  &:hover:after, &:hover:before {
+    background: #a8b15b;
+  }
+  
+  &::before {
+    transform: rotate(45deg);
+  }
+  
+  &::after {
+    transform: rotate(-45deg);
+  }
 }
