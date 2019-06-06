@@ -36,27 +36,33 @@ class Form extends React.Component {
           className={styles.form}
           onSubmit={this.props.submitFn}
         >
+        <label className={styles.radio} htmlFor={types.menu}>
           <input
             id={types.menu}
             type="radio"
             checked={this.state.activeOption === types.menu}
             onChange={() => this.handleRadioButtonCHange(types.menu)}
           />
-          <label htmlFor={types.menu}>Menu</label>
+          <div className={styles.radioButton} />
+          Menu</label>
+          <label className={styles.radio}  htmlFor={types.news}>
           <input
             id={types.news}
             type="radio"
             checked={this.state.activeOption === types.news}
             onChange={() => this.handleRadioButtonCHange(types.news)}
           />
-          <label htmlFor={types.news}>News</label>
+          <div className={styles.radioButton} />
+          News</label>
+          <label className={styles.radio} htmlFor={types.gallery}>
           <input
             id={types.gallery}
             type="radio"
             checked={this.state.activeOption === types.gallery}
             onChange={() => this.handleRadioButtonCHange(types.gallery)}
           />
-          <label htmlFor={types.gallery}>Gallery</label>
+          <div className={styles.radioButton} />
+          Gallery</label>
           <Input name="name" label="Name" maxLength={30} />
           <Input name="price" label="Price" />
           <Input name="image" label="Image" />
