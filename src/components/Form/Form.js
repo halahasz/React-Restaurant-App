@@ -4,6 +4,7 @@ import Input from "../Input/Input";
 import Button from "../Button/Button";
 import Title from "../Title/Title";
 import FormRadio from "./FormRadio";
+import AppContext from "../../context";
 
 const types = {
   menu: "menu",
@@ -28,48 +29,59 @@ class Form extends React.Component {
     });
   };
 
-  
   render() {
-    const {activeOption} = this.state
+    const { activeOption } = this.state;
     return (
-      <div className={styles.wrapper}>
-        <Title>Add new {descriptions[activeOption]}</Title>
-        <form
-          autoComplete="off"
-          className={styles.form}
-          onSubmit={this.props.submitFn}
-        >
-          <div className={styles.radioWrapper}>
-            <FormRadio
-              id={types.menu}
-              checked={activeOption === types.menu}
-              changeFn={() => this.handleRadioButtonCHange(types.menu)}
+      <AppContext.Consumer>
+        {context => (
+          <div className={styles.wrapper}>
+            <Title>Add new {descriptions[activeOption]}</Title>
+            <form
+              autoComplete="off"
+              className={styles.form}
+              onSubmit={this.props.submitFn}
             >
-              Menu
-            </FormRadio>
-            <FormRadio
-              id={types.news}
-              checked={activeOption === types.news}
-              changeFn={() => this.handleRadioButtonCHange(types.news)}
-            >
-              News
-            </FormRadio>
-            <FormRadio
-              id={types.gallery}
-              checked={activeOption === types.gallery}
-              changeFn={() => this.handleRadioButtonCHange(types.gallery)}
-            >
-              Gallery
-            </FormRadio>
-          </div>
+              <div className={styles.radioWrapper}>
+                <FormRadio
+                  id={types.menu}
+                  checked={activeOption === types.menu}
+                  changeFn={() => this.handleRadioButtonCHange(types.menu)}
+                >
+                  Menu
+                </FormRadio>
+                <FormRadio
+                  id={types.news}
+                  checked={activeOption === types.news}
+                  changeFn={() => this.handleRadioButtonCHange(types.news)}
+                >
+                  News
+                </FormRadio>
+                <FormRadio
+                  id={types.gallery}
+                  checked={activeOption === types.gallery}
+                  changeFn={() => this.handleRadioButtonCHange(types.gallery)}
+                >
+                  Gallery
+                </FormRadio>
+              </div>
 
-          <Input name="name" label="Title" maxLength={30} />
-          {this.state.activeOption === types.menu ? <Input name="price" label="Price" /> : null}
-          <Input name="image" label="Image" />
-          {this.state.activeOption !== types.gallery ? <Input tag="textarea" name="ingredients" label={activeOption === types.menu ? "Ingredients" : "Text"} /> : null}
-          <Button>add new item</Button>
-        </form>
-      </div>
+              <Input name="name" label="Title" maxLength={30} />
+              {this.state.activeOption === types.menu ? (
+                <Input name="price" label="Price" />
+              ) : null}
+              <Input name="image" label="Image" />
+              {this.state.activeOption !== types.gallery ? (
+                <Input
+                  tag="textarea"
+                  name="ingredients"
+                  label={activeOption === types.menu ? "Ingredients" : "Text"}
+                />
+              ) : null}
+              <Button>add new item</Button>
+            </form>
+          </div>
+        )}
+      </AppContext.Consumer>
     );
   }
 }

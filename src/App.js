@@ -1,5 +1,6 @@
 import React from "react";
 import "./index.css";
+import AppContext from "./context";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import HomePage from "./pages/HomePage/HomePage";
 import MenuPage from "./pages/MenuPage/MenuPage";
@@ -8,35 +9,14 @@ import GalleryPage from "./pages/GalleryPage/GalleryPage";
 import Header from "./components/Header/Header";
 import Modal from "./components/Modal/Modal";
 
-const initialStateItems = [
-  {
-    image:
-      "http://veganic.restaurant/wp-content/uploads/2018/04/img_2086-1.jpg",
-    name: "Ravioli with mashrooms",
-    price: "28zl",
-    ingredients:
-      "boletus, oyster mushrooms, truffle paste, butternut squash, spinach, chanterelle"
-  },
-  {
-    image:
-      "http://veganic.restaurant/wp-content/uploads/2018/04/img_2086-1.jpg",
-    price: "12zl",
-    name: "Herbal polenta fries",
-    ingredients: "mayo dip"
-  },
-  {
-    image:
-      "http://veganic.restaurant/wp-content/uploads/2018/04/img_2086-1.jpg",
-    price: "14zl",
-    name: "Creamy roasted beetroot soup with pear",
-    ingredients: "vegan cream, toasted pumpkin seeds"
-  }
-];
-
 class App extends React.Component {
   state = {
-    items: [...initialStateItems],
-    isModalOpen: true
+    items: {
+      menu: [],
+      news: [],
+      gallery: []
+    },
+    isModalOpen: false
   };
 
   addItem = e => {
@@ -70,9 +50,13 @@ class App extends React.Component {
 
   render() {
     const { isModalOpen } = this.state;
+    const contextElements = {
+      ...this.state,
+      addItem: this.addItem
+    }
     return (
       <BrowserRouter>
-        <>
+        <AppContext.Provider value={contextElements}>
           <Header openModalFn={this.openModal} />
           <h1>Hello World!</h1>
           <Switch>
@@ -82,7 +66,7 @@ class App extends React.Component {
             <Route path="/gallery" component={GalleryPage} />
           </Switch>
           {isModalOpen && <Modal closeModalFn={this.closeModal} />}
-        </>
+        </AppContext.Provider>
       </BrowserRouter>
     );
   }
