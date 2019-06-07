@@ -28,10 +28,12 @@ class Form extends React.Component {
     });
   };
 
+  
   render() {
+    const {activeOption} = this.state
     return (
       <div className={styles.wrapper}>
-        <Title>Add new {descriptions[this.state.activeOption]}</Title>
+        <Title>Add new {descriptions[activeOption]}</Title>
         <form
           autoComplete="off"
           className={styles.form}
@@ -40,30 +42,31 @@ class Form extends React.Component {
           <div className={styles.radioWrapper}>
             <FormRadio
               id={types.menu}
-              checked={this.state.activeOption === types.menu}
+              checked={activeOption === types.menu}
               changeFn={() => this.handleRadioButtonCHange(types.menu)}
             >
               Menu
             </FormRadio>
             <FormRadio
               id={types.news}
-              checked={this.state.activeOption === types.news}
+              checked={activeOption === types.news}
               changeFn={() => this.handleRadioButtonCHange(types.news)}
             >
               News
             </FormRadio>
             <FormRadio
               id={types.gallery}
-              checked={this.state.activeOption === types.gallery}
+              checked={activeOption === types.gallery}
               changeFn={() => this.handleRadioButtonCHange(types.gallery)}
             >
               Gallery
             </FormRadio>
           </div>
-          <Input name="name" label="Name" maxLength={30} />
-          <Input name="price" label="Price" />
+
+          <Input name="name" label="Title" maxLength={30} />
+          {this.state.activeOption === types.menu ? <Input name="price" label="Price" /> : null}
           <Input name="image" label="Image" />
-          <Input tag="textarea" name="ingredients" label="Ingredients" />
+          {this.state.activeOption !== types.gallery ? <Input tag="textarea" name="ingredients" label={activeOption === types.menu ? "Ingredients" : "Text"} /> : null}
           <Button>add new item</Button>
         </form>
       </div>
