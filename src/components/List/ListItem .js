@@ -15,10 +15,10 @@ const MenuItem = ({ image, title, price, ingredients }) => {
       />
       <div>
         <Title>{title}</Title>
-        <span className={styles.menuItem__price}>
+        {price && <span className={styles.menuItem__price}>
           <span className={styles.menuItem__dots}> . . . . . </span>
           {price}
-        </span>
+        </span>}
         <p className={styles.menuItem__ingredients}>{ingredients}</p>
       </div>
     </li>

@@ -49,7 +49,6 @@ class App extends React.Component {
       <BrowserRouter>
         <AppContext.Provider value={contextElements}>
           <Header openModalFn={this.openModal} />
-          <h1>Hello World!</h1>
           <Switch>
             <Route exact path="/" component={HomePage} />
             <Route path="/menu" component={MenuPage} />

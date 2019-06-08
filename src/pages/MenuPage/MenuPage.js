@@ -1,7 +1,11 @@
 import React from 'react';
+import AppContex from '../../context'
+import List from "../../components/List/List"
 
 const MenuPage = () => (
-  <p>This is a Menu Page view</p>
+  <AppContex.Consumer>
+    {(context) => (<List items={context.menu} />)}
+  </AppContex.Consumer>
 );
 
 export default MenuPage;
