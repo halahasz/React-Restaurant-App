@@ -1,9 +1,9 @@
 import React from "react";
-import styles from "./MenuItem.module.scss";
+import styles from "./ListItem.module.scss";
 import PropTypes from "prop-types";
 import Title from '../Title/Title'
 
-const MenuItem = ({ image, name, price, ingredients }) => {
+const MenuItem = ({ image, title, price, ingredients }) => {
   const ImageTag = image ? "img" : "div";
 
   return (
@@ -11,10 +11,10 @@ const MenuItem = ({ image, name, price, ingredients }) => {
       <ImageTag
         className={image ? styles.image : styles.imageNone}
         src={image}
-        alt={name}
+        alt={title}
       />
       <div>
-        <Title>{name}</Title>
+        <Title>{title}</Title>
         <span className={styles.menuItem__price}>
           <span className={styles.menuItem__dots}> . . . . . </span>
           {price}
@@ -29,11 +29,13 @@ export default MenuItem;
 
 MenuItem.propTypes = {
   image: PropTypes.string,
-  name: PropTypes.string.isRequired,
-  price: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  price: PropTypes.string,
   ingredients: PropTypes.string
 };
 
 MenuItem.defaultProps = {
-  image: null
+  image: null, 
+  price: null,
+  ingredients: null,
 };
