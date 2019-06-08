@@ -36,8 +36,8 @@ class Form extends React.Component {
   handleInputChange = e => {
     this.setState({
       [e.target.name]: e.target.value
-    })
-  }
+    });
+  };
 
   render() {
     const { type } = this.state;
@@ -49,7 +49,7 @@ class Form extends React.Component {
             <form
               autoComplete="off"
               className={styles.form}
-              onSubmit={(e) => context.addItem(e, this.state)}
+              onSubmit={e => context.addItem(e, this.state)}
             >
               <div className={styles.radioWrapper}>
                 <FormRadio
@@ -75,34 +75,60 @@ class Form extends React.Component {
                 </FormRadio>
               </div>
 
-              <Input 
-              value={this.state.title}
+              <Input
+                value={this.state.title}
                 onChange={this.handleInputChange}
+                required
                 name="title"
                 label="Title"
                 maxLength={30}
               />
               {this.state.type === types.menu ? (
-                <Input 
-                value={this.state.price}
+                <Input
+                  value={this.state.price}
                   onChange={this.handleInputChange}
                   name="price"
+                  required
                   label="Price"
                 />
               ) : null}
-              <Input 
-              value={this.state.image}
-                onChange={this.handleInputChange}
-                name="image"
-                label="Image"
-              />
-              {this.state.type !== types.gallery ? (
-                <Input 
-                value={this.state.ingredients}
+              {this.state.type === types.gallery ? (
+                <Input
+                  value={this.state.image}
+                  onChange={this.handleInputChange}
+                  required
+                  name="image"
+                  label="Image"
+                />
+              ) : (
+                <Input
+                  value={this.state.image}
+                  onChange={this.handleInputChange}
+                  name="image"
+                  label="Image"
+                />
+              )}
+
+              {(this.state.type !== types.gallery  && this.state.type === types.news) ? (
+                <Input
+                  value={this.state.ingredients}
+                  onChange={this.handleInputChange}
+                  tag="textarea"
+                  required
+                  name="ingredients"
+                  label="Text"
+                  type={this.state.type}
+                />
+              ) : null}
+
+              {(this.state.type !== types.gallery && this.state.type) === types.menu ? (
+                <Input
+                  value={this.state.ingredients}
                   onChange={this.handleInputChange}
                   tag="textarea"
                   name="ingredients"
-                  label={type === types.menu ? "Ingredients" : "Text"}
+                  label="Ingredients"
+                  type={this.state.type}
                 />
               ) : null}
               <Button>add new item</Button>

@@ -49,7 +49,7 @@ class App extends React.Component {
         <AppContext.Provider value={contextElements}>
           <Header openModalFn={this.openModal} />
           <Switch>
-            <Route path="/menu" component={MenuPage} />
+            <Route exact path="/" component={MenuPage} />
             <Route path="/news" component={NewsPage} />
             <Route path="/gallery" component={GalleryPage} />
           </Switch>
