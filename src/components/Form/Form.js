@@ -20,61 +20,89 @@ const descriptions = {
 
 class Form extends React.Component {
   state = {
-    activeOption: types.menu
+    type: types.menu,
+    title: "",
+    price: "",
+    image: "",
+    ingredents: ""
   };
 
   handleRadioButtonCHange = type => {
     this.setState({
-      activeOption: type
+      type: type
     });
   };
 
+  handleInputChange = e => {
+    this.setState({
+      [e.target.name]: e.target.value
+    })
+  }
+
   render() {
-    const { activeOption } = this.state;
+    const { type } = this.state;
     return (
       <AppContext.Consumer>
         {context => (
           <div className={styles.wrapper}>
-            <Title>Add new {descriptions[activeOption]}</Title>
+            <Title>Add new {descriptions[type]}</Title>
             <form
               autoComplete="off"
               className={styles.form}
-              onSubmit={this.props.submitFn}
+              onSubmit={(e) => context.addItem(e, this.state)}
             >
               <div className={styles.radioWrapper}>
                 <FormRadio
                   id={types.menu}
-                  checked={activeOption === types.menu}
+                  checked={type === types.menu}
                   changeFn={() => this.handleRadioButtonCHange(types.menu)}
                 >
                   Menu
                 </FormRadio>
                 <FormRadio
                   id={types.news}
-                  checked={activeOption === types.news}
+                  checked={type === types.news}
                   changeFn={() => this.handleRadioButtonCHange(types.news)}
                 >
                   News
                 </FormRadio>
                 <FormRadio
                   id={types.gallery}
-                  checked={activeOption === types.gallery}
+                  checked={type === types.gallery}
                   changeFn={() => this.handleRadioButtonCHange(types.gallery)}
                 >
                   Gallery
                 </FormRadio>
               </div>
 
-              <Input name="name" label="Title" maxLength={30} />
-              {this.state.activeOption === types.menu ? (
-                <Input name="price" label="Price" />
+              <Input 
+              value={this.state.title}
+                onChange={this.handleInputChange}
+                name="title"
+                label="Title"
+                maxLength={30}
+              />
+              {this.state.type === types.menu ? (
+                <Input 
+                value={this.state.price}
+                  onChange={this.handleInputChange}
+                  name="price"
+                  label="Price"
+                />
               ) : null}
-              <Input name="image" label="Image" />
-              {this.state.activeOption !== types.gallery ? (
-                <Input
+              <Input 
+              value={this.state.image}
+                onChange={this.handleInputChange}
+                name="image"
+                label="Image"
+              />
+              {this.state.type !== types.gallery ? (
+                <Input 
+                value={this.state.ingredients}
+                  onChange={this.handleInputChange}
                   tag="textarea"
                   name="ingredients"
-                  label={activeOption === types.menu ? "Ingredients" : "Text"}
+                  label={type === types.menu ? "Ingredients" : "Text"}
                 />
               ) : null}
               <Button>add new item</Button>

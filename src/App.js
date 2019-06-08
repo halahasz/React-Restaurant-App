@@ -11,29 +11,20 @@ import Modal from "./components/Modal/Modal";
 
 class App extends React.Component {
   state = {
-    items: {
-      menu: [],
-      news: [],
-      gallery: []
-    },
+    menu: [],
+    news: [],
+    gallery: [],
     isModalOpen: false
   };
 
-  addItem = e => {
+  addItem = (e, newItem) => {
     e.preventDefault();
 
-    const newItem = {
-      name: e.target[0].value,
-      price: e.target[1].value,
-      image: e.target[2].value,
-      ingredients: e.target[3].value
-    };
-
     this.setState(prevState => ({
-      items: [...prevState.items, newItem]
-    }));
+      [newItem.type]: [...prevState[newItem.type], newItem]
+    })) 
 
-    e.target.reset();
+    this.closeModal();
   };
 
   openModal = () => {
@@ -53,7 +44,7 @@ class App extends React.Component {
     const contextElements = {
       ...this.state,
       addItem: this.addItem
-    }
+    };
     return (
       <BrowserRouter>
         <AppContext.Provider value={contextElements}>
