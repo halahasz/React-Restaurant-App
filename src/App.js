@@ -2,7 +2,6 @@ import React from "react";
 import "./index.css";
 import AppContext from "./context";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import HomePage from "./pages/HomePage/HomePage";
 import MenuPage from "./pages/MenuPage/MenuPage";
 import NewsPage from "./pages/NewsPage/NewsPage";
 import GalleryPage from "./pages/GalleryPage/GalleryPage";
@@ -50,7 +49,6 @@ class App extends React.Component {
         <AppContext.Provider value={contextElements}>
           <Header openModalFn={this.openModal} />
           <Switch>
-            <Route exact path="/" component={HomePage} />
             <Route path="/menu" component={MenuPage} />
             <Route path="/news" component={NewsPage} />
             <Route path="/gallery" component={GalleryPage} />

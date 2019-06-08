@@ -6,9 +6,6 @@ const HeaderNavigation = () => (
   <nav>
     <ul className={styles.wrapper} >
       <li className={styles.navItem}>
-        <NavLink exact activeClassName={styles.navItemLinkActive} className={styles.navItemLink} to="/">Home</NavLink>
-      </li>
-      <li className={styles.navItem}>
         <NavLink activeClassName={styles.navItemLinkActive} className={styles.navItemLink} to="/menu">Menu</NavLink>
       </li>
       <li className={styles.navItem}>
