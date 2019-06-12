@@ -81,7 +81,6 @@ class Form extends React.Component {
                 required
                 name="title"
                 label="Title"
-                maxLength={30}
               />
               {this.state.type === types.menu ? (
                 <Input
