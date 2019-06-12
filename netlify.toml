@@ -1,4 +1,0 @@
-[build]
-base = "react-restaurant/"
-publish = "react-restaurant/build/"
-command = "npm run build"
