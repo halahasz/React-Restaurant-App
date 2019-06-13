@@ -1,3 +1,5 @@
+# Link to project site: [https://react-restaurant.netlify.com](https://react-restaurant.netlify.com)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
