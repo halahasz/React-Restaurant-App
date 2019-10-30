@@ -9,16 +9,19 @@ import Header from "./components/Header/Header";
 import Modal from "./components/Modal/Modal";
 
 class App extends React.Component {
+  
   state = {
     menu: [],
-    news: [],
+    news: [JSON.parse(sessionStorage.getItem('key0'))],
+    // news: [],
     gallery: [],
-    isModalOpen: false
+    isModalOpen: false,
+    counter: 0
   };
 
   addItem = (e, newItem) => {
     e.preventDefault();
-
+    sessionStorage.setItem('key' + Math.random().toString(36).substring(10), JSON.stringify(newItem));
     this.setState(prevState => ({
       [newItem.type]: [...prevState[newItem.type], newItem]
     })) 
