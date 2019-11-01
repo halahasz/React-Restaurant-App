@@ -10,9 +10,9 @@ import Modal from "./components/Modal/Modal";
 
 class App extends React.Component {
   initState = () => {
-    let init = [
+    const init = [
       {
-        type: "news",
+        type: "menu",
         title: "ddd",
         price: "",
         image: "",
@@ -20,34 +20,50 @@ class App extends React.Component {
         ingredients: "ddd"
       }
     ];
-    if (sessionStorage["items"] != null) {
-      return JSON.parse(sessionStorage["items"]);
-    } else {
-      return init;
-    }
+    const data = (() => {
+      if (sessionStorage["menu"] != null) {
+        return JSON.parse(sessionStorage["menu"]);
+      } else {
+        return init;
+      }
+    })();
+
+    this.setState({ menu: data });
   };
+
+  componentDidMount() {
+    this.initState();
+  }
 
   state = {
     menu: [],
-    news: this.initState(),
-    // news: [],
+    news: [],
     gallery: [],
-    isModalOpen: false,
-    counter: 0
+    isModalOpen: false
   };
 
   addItem = (e, newItem) => {
     e.preventDefault();
-    // sessionStorage.setItem('key' + Math.random().toString(36).substring(10), [JSON.stringify(newItem)]);
     this.setState(prevState => ({
       [newItem.type]: [...prevState[newItem.type], newItem]
     }));
-    sessionStorage["items"] = JSON.stringify([
-      ...this.state[newItem.type],
-      newItem
-    ]);
-
     this.closeModal();
+    if (newItem.type == "menu") {
+      return (sessionStorage["menu"] = JSON.stringify([
+        ...this.state["menu"],
+        newItem
+      ]));
+    } else if (newItem.type == "news") {
+      return (sessionStorage["news"] = JSON.stringify([
+        ...this.state["news"],
+        newItem
+      ]));
+    } else {
+      return (sessionStorage["gallery"] = JSON.stringify([
+        ...this.state["gallery"],
+        newItem
+      ]));
+    }
   };
 
   openModal = () => {
