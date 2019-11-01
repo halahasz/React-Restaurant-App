@@ -9,10 +9,27 @@ import Header from "./components/Header/Header";
 import Modal from "./components/Modal/Modal";
 
 class App extends React.Component {
-  
+  initState = () => {
+    let init = [
+      {
+        type: "news",
+        title: "ddd",
+        price: "",
+        image: "",
+        ingredents: "",
+        ingredients: "ddd"
+      }
+    ];
+    if (sessionStorage["items"] != null) {
+      return JSON.parse(sessionStorage["items"]);
+    } else {
+      return init;
+    }
+  };
+
   state = {
     menu: [],
-    news: JSON.parse(sessionStorage['items']),
+    news: this.initState(),
     // news: [],
     gallery: [],
     isModalOpen: false,
@@ -24,8 +41,11 @@ class App extends React.Component {
     // sessionStorage.setItem('key' + Math.random().toString(36).substring(10), [JSON.stringify(newItem)]);
     this.setState(prevState => ({
       [newItem.type]: [...prevState[newItem.type], newItem]
-    })) 
-    sessionStorage['items']= JSON.stringify([...this.state[newItem.type], newItem]);
+    }));
+    sessionStorage["items"] = JSON.stringify([
+      ...this.state[newItem.type],
+      newItem
+    ]);
 
     this.closeModal();
   };
