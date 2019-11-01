@@ -12,7 +12,7 @@ class App extends React.Component {
   
   state = {
     menu: [],
-    news: [JSON.parse(sessionStorage.getItem('key0'))],
+    news: JSON.parse(sessionStorage['items']),
     // news: [],
     gallery: [],
     isModalOpen: false,
@@ -21,10 +21,11 @@ class App extends React.Component {
 
   addItem = (e, newItem) => {
     e.preventDefault();
-    sessionStorage.setItem('key' + Math.random().toString(36).substring(10), JSON.stringify(newItem));
+    // sessionStorage.setItem('key' + Math.random().toString(36).substring(10), [JSON.stringify(newItem)]);
     this.setState(prevState => ({
       [newItem.type]: [...prevState[newItem.type], newItem]
     })) 
+    sessionStorage['items']= JSON.stringify([...this.state[newItem.type], newItem]);
 
     this.closeModal();
   };
