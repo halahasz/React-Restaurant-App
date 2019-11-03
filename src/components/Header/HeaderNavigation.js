@@ -12,6 +12,7 @@ const HeaderNavigation = () => (
             <NavLink
               exact
               activeClassName={styles.navItemLinkActive}
+              onClick={() => context.setActiveType("menu")}
               className={styles.navItemLink}
               to="/"
             >
@@ -22,6 +23,7 @@ const HeaderNavigation = () => (
             <NavLink
               activeClassName={styles.navItemLinkActive}
               className={styles.navItemLink}
+              onClick={() => context.setActiveType("news")}
               to="/news"
             >
               News
@@ -31,6 +33,7 @@ const HeaderNavigation = () => (
             <NavLink
               activeClassName={styles.navItemLinkActive}
               className={styles.navItemLink}
+              onClick={() => context.setActiveType("gallery")}
               to="/gallery"
             >
               Gallery

@@ -39,7 +39,8 @@ class App extends React.Component {
     menu: [],
     news: [],
     gallery: [],
-    isModalOpen: false
+    isModalOpen: false,
+    activeType: "menu"
   };
 
   addItem = (e, newItem) => {
@@ -66,6 +67,12 @@ class App extends React.Component {
     }
   };
 
+  setActiveType = (type) => {
+    this.setState({
+      activeType: type
+    });
+  };
+
   openModal = () => {
     this.setState({
       isModalOpen: true
@@ -82,16 +89,17 @@ class App extends React.Component {
     const { isModalOpen } = this.state;
     const contextElements = {
       ...this.state,
-      addItem: this.addItem
+      addItem: this.addItem,
+      setActiveType: this.setActiveType
     };
     return (
       <BrowserRouter>
         <AppContext.Provider value={contextElements}>
           <Header openModalFn={this.openModal} />
           <Switch>
-            <Route exact path="/" component={MenuPage} />
-            <Route path="/news" component={NewsPage} />
-            <Route path="/gallery" component={GalleryPage} />
+            <Route onChange={() => this.setActiveType("menu")} exact path="/" component={MenuPage} />
+            <Route onChange={() => this.setActiveType("news")}  path="/news" component={NewsPage} />
+            <Route onChange={() => this.setActiveType("gallery")}  path="/gallery" component={GalleryPage} />
           </Switch>
           {isModalOpen && <Modal closeModalFn={this.closeModal} />}
         </AppContext.Provider>
