@@ -9,7 +9,7 @@ import Header from "./components/Header/Header";
 import Modal from "./components/Modal/Modal";
 
 class App extends React.Component {
-  initState = () => {
+  initMenu = () => {
     const init = [
       {
         type: "menu",
@@ -32,7 +32,7 @@ class App extends React.Component {
   };
 
   componentDidMount() {
-    this.initState();
+    this.initMenu();
   }
 
   state = {
