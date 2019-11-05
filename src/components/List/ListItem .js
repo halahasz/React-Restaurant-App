@@ -3,11 +3,11 @@ import styles from "./ListItem.module.scss";
 import PropTypes from "prop-types";
 import Title from '../Title/Title'
 
-const MenuItem = ({ image, title, price, ingredients }) => {
+const MenuItem = ({ image, title, price, ingredients, ...props }) => {
   const ImageTag = image ? "img" : "div";
 
   return (
-    <li className={styles.wrapper}>
+    <li className={styles.wrapper} {...props}>
       <ImageTag
         className={image ? styles.image : styles.imageNone}
         src={image}

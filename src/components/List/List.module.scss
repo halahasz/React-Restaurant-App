@@ -2,8 +2,14 @@
   width: 80vw;
   margin: 0 auto 0;
   padding-left: 0;
+  padding-top: 150px;
+  position: relative;
+  z-index: 10;
 }
 .noItems {
+  padding-top: 150px;
+  position: relative;
+  z-index: 10;
   font-size: 1.3rem;
   color: #4a5777;
   font-weight: normal;

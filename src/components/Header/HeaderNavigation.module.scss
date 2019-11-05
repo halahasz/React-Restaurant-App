@@ -1,4 +1,6 @@
 .navItem {
+  position: relative;
+  z-index: 100;
   display: inline-block;
   margin-right: 50px;
   list-style: none;

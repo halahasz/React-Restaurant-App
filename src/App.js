@@ -40,7 +40,7 @@ class App extends React.Component {
     news: [],
     gallery: [],
     isModalOpen: false,
-    activeType: "menu"
+    activeType: ''
   };
 
   addItem = (e, newItem) => {
@@ -97,9 +97,9 @@ class App extends React.Component {
         <AppContext.Provider value={contextElements}>
           <Header openModalFn={this.openModal} />
           <Switch>
-            <Route onChange={() => this.setActiveType("menu")} exact path="/" component={MenuPage} />
-            <Route onChange={() => this.setActiveType("news")}  path="/news" component={NewsPage} />
-            <Route onChange={() => this.setActiveType("gallery")}  path="/gallery" component={GalleryPage} />
+            <Route exact path="/" component={MenuPage} />
+            <Route path="/news" component={NewsPage} />
+            <Route path="/gallery" component={GalleryPage} />
           </Switch>
           {isModalOpen && <Modal closeModalFn={this.closeModal} />}
         </AppContext.Provider>

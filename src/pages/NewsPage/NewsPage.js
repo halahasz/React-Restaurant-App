@@ -4,7 +4,9 @@ import List from "../../components/List/List"
 
 const NewsPage = () => (
   <AppContex.Consumer>
-    {(context) => (<List items={context.news} />)}
+    {(context) => (<List items={context.news} onMouseOver={() => {
+            context.setActiveType("news");
+          }}/>)}
   </AppContex.Consumer>
 );
 
