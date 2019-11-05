@@ -7,18 +7,25 @@ import NewsPage from "./pages/NewsPage/NewsPage";
 import GalleryPage from "./pages/GalleryPage/GalleryPage";
 import Header from "./components/Header/Header";
 import Modal from "./components/Modal/Modal";
+import soupImage from './assets/img/soup.jpg';
+import friesImage from './assets/img/fries.jpg';
+import ravioliImage from './assets/img/ravioli.jpg';
 
 class App extends React.Component {
   initMenu = () => {
     const init = [
       {
-        type: "menu",
-        title: "ddd",
-        price: "",
-        image: "",
-        ingredents: "",
-        ingredients: "ddd"
-      }
+        title: 'Creamy roasted beetroot soup with pear',
+        price: '14zl',
+        image: soupImage,
+        ingredients: 'vegan cream, toasted pumpkin seeds'
+      },
+      {
+        title: 'Herbal polenta fries',
+        price: '12zl',
+        image: friesImage,
+        ingredients: 'mayo dip'
+      },
     ];
     const data = (() => {
       if (sessionStorage["menu"] != null) {
