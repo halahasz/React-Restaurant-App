@@ -79,7 +79,7 @@ class App extends React.Component {
   addItem = (e, newItem) => {
     e.preventDefault();
     this.setState(prevState => ({
-      [newItem.type]: [...prevState[newItem.type], newItem]
+      [this.state.activeType]: [...prevState[this.state.activeType], newItem]
     }));
     this.closeModal();
     if (this.state.activeType == "menu") {
