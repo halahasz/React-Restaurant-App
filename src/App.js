@@ -7,18 +7,24 @@ import NewsPage from "./pages/NewsPage/NewsPage";
 import GalleryPage from "./pages/GalleryPage/GalleryPage";
 import Header from "./components/Header/Header";
 import Modal from "./components/Modal/Modal";
+import soupImage from './assets/img/soup.jpg';
+import friesImage from './assets/img/fries.jpg';
 
 class App extends React.Component {
-  initState = () => {
+  initMenu = () => {
     const init = [
       {
-        type: "menu",
-        title: "ddd",
-        price: "",
-        image: "",
-        ingredents: "",
-        ingredients: "ddd"
-      }
+        title: 'Creamy roasted beetroot soup with pear',
+        price: '14zl',
+        image: soupImage,
+        ingredients: 'vegan cream, toasted pumpkin seeds'
+      },
+      {
+        title: 'Herbal polenta fries',
+        price: '12zl',
+        image: friesImage,
+        ingredients: 'mayo dip'
+      },
     ];
     const data = (() => {
       if (sessionStorage["menu"] != null) {
@@ -31,8 +37,35 @@ class App extends React.Component {
     this.setState({ menu: data });
   };
 
+  initNews = () => {
+    const init = [
+      {
+        title: 'Creamy roasted beetroot soup with pear',
+        price: '14zl',
+        image: soupImage,
+        ingredients: 'vegan cream, toasted pumpkin seeds'
+      },
+      {
+        title: 'Herbal polenta fries',
+        price: '12zl',
+        image: friesImage,
+        ingredients: 'mayo dip'
+      },
+    ];
+    const data = (() => {
+      if (sessionStorage["news"] != null) {
+        return JSON.parse(sessionStorage["news"]);
+      } else {
+        return [];
+      }
+    })();
+
+    this.setState({ news: data });
+  };
+
   componentDidMount() {
-    this.initState();
+    this.initMenu();
+    this.initNews();
   }
 
   state = {
@@ -49,12 +82,12 @@ class App extends React.Component {
       [newItem.type]: [...prevState[newItem.type], newItem]
     }));
     this.closeModal();
-    if (newItem.type == "menu") {
+    if (this.state.activeType == "menu") {
       return (sessionStorage["menu"] = JSON.stringify([
         ...this.state["menu"],
         newItem
       ]));
-    } else if (newItem.type == "news") {
+    } else if (this.state.activeType == "news") {
       return (sessionStorage["news"] = JSON.stringify([
         ...this.state["news"],
         newItem
