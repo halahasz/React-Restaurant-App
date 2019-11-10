@@ -41,6 +41,38 @@ class App extends React.Component {
   componentDidMount() {
     this.initMenu();
   }
+  initNews = () => {
+    const data = (() => {
+      if (sessionStorage["news"] != null) {
+        return JSON.parse(sessionStorage["news"]);
+      } else {
+        return [];
+      }
+    })();
+
+    this.setState({ news: data });
+  };
+
+  componentDidMount() {
+    this.initNews();
+  }
+  initGallery= () => {
+    const data = (() => {
+      if (sessionStorage["gallery"] != null) {
+        return JSON.parse(sessionStorage["gallery"]);
+      } else {
+        return [];
+      }
+    })();
+
+    this.setState({ gallery: data });
+  };
+
+  componentDidMount() {
+    this.initMenu();
+    this.initNews();
+    this.initGallery();
+  }
 
   state = {
     menu: [],
