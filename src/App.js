@@ -9,10 +9,6 @@ import Header from "./components/Header/Header";
 import Modal from "./components/Modal/Modal";
 import soupImage from './assets/img/soup.jpg';
 import friesImage from './assets/img/fries.jpg';
-<<<<<<< HEAD
-=======
-import ravioliImage from './assets/img/ravioli.jpg';
->>>>>>> 38ba22c1d100e30e010238ed981b51e6cd5e1130
 
 class App extends React.Component {
   initMenu = () => {
