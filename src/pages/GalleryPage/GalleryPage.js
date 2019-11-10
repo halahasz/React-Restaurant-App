@@ -4,7 +4,9 @@ import List from "../../components/List/List"
 
 const GalleryPage = () => (
   <AppContex.Consumer>
-    {(context) => (<List items={context.gallery} />)}
+    {(context) => (<List items={context.gallery} onMouseOver={() => {
+            context.setActiveType("gallery");
+          }}/>)}
   </AppContex.Consumer>
 );
 

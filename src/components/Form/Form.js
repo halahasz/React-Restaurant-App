@@ -27,7 +27,7 @@ class Form extends React.Component {
     ingredents: ""
   };
 
-  handleRadioButtonCHange = type => {
+  setType = type => {
     this.setState({
       type: type
     });
@@ -45,13 +45,16 @@ class Form extends React.Component {
       <AppContext.Consumer>
         {context => (
           <div className={styles.wrapper}>
-            <Title>Add new {descriptions[type]}</Title>
+            <Title>Add new {descriptions[context.activeType]}</Title>
             <form
               autoComplete="off"
               className={styles.form}
-              onSubmit={e => context.addItem(e, this.state)}
+              onSubmit={e => {
+                this.setType(context.activeType);
+                context.addItem(e, this.state);
+              }}
             >
-              <div className={styles.radioWrapper}>
+              {/* <div className={styles.radioWrapper}>
                 <FormRadio
                   id={types.menu}
                   checked={type === types.menu}
@@ -73,7 +76,7 @@ class Form extends React.Component {
                 >
                   Gallery
                 </FormRadio>
-              </div>
+              </div> */}
 
               <Input
                 value={this.state.title}
@@ -82,7 +85,7 @@ class Form extends React.Component {
                 name="title"
                 label="Title"
               />
-              {this.state.type === types.menu ? (
+              {context.activeType === types.menu ? (
                 <Input
                   value={this.state.price}
                   onChange={this.handleInputChange}
@@ -91,7 +94,7 @@ class Form extends React.Component {
                   label="Price"
                 />
               ) : null}
-              {this.state.type === types.gallery ? (
+              {context.activeType === types.gallery ? (
                 <Input
                   value={this.state.image}
                   onChange={this.handleInputChange}
@@ -108,7 +111,8 @@ class Form extends React.Component {
                 />
               )}
 
-              {(this.state.type !== types.gallery  && this.state.type === types.news) ? (
+              {context.activeType !== types.gallery &&
+              context.activeType === types.news ? (
                 <Input
                   value={this.state.ingredients}
                   onChange={this.handleInputChange}
@@ -120,7 +124,8 @@ class Form extends React.Component {
                 />
               ) : null}
 
-              {(this.state.type !== types.gallery && this.state.type) === types.menu ? (
+              {(context.activeType !== types.gallery && context.activeType) ===
+              types.menu ? (
                 <Input
                   value={this.state.ingredients}
                   onChange={this.handleInputChange}

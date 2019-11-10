@@ -1,4 +1,6 @@
 .button {
+  position: relative;
+  z-index: 100;
   cursor: pointer;
   font-size: 10px;
   text-decoration: none;

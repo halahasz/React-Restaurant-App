@@ -9,7 +9,10 @@ import Header from "./components/Header/Header";
 import Modal from "./components/Modal/Modal";
 import soupImage from './assets/img/soup.jpg';
 import friesImage from './assets/img/fries.jpg';
+<<<<<<< HEAD
+=======
 import ravioliImage from './assets/img/ravioli.jpg';
+>>>>>>> 38ba22c1d100e30e010238ed981b51e6cd5e1130
 
 class App extends React.Component {
   initMenu = () => {
@@ -38,29 +41,57 @@ class App extends React.Component {
     this.setState({ menu: data });
   };
 
+  initNews = () => {
+    const init = [
+      {
+        title: 'Creamy roasted beetroot soup with pear',
+        price: '14zl',
+        image: soupImage,
+        ingredients: 'vegan cream, toasted pumpkin seeds'
+      },
+      {
+        title: 'Herbal polenta fries',
+        price: '12zl',
+        image: friesImage,
+        ingredients: 'mayo dip'
+      },
+    ];
+    const data = (() => {
+      if (sessionStorage["news"] != null) {
+        return JSON.parse(sessionStorage["news"]);
+      } else {
+        return [];
+      }
+    })();
+
+    this.setState({ news: data });
+  };
+
   componentDidMount() {
     this.initMenu();
+    this.initNews();
   }
 
   state = {
     menu: [],
     news: [],
     gallery: [],
-    isModalOpen: false
+    isModalOpen: false,
+    activeType: ''
   };
 
   addItem = (e, newItem) => {
     e.preventDefault();
     this.setState(prevState => ({
-      [newItem.type]: [...prevState[newItem.type], newItem]
+      [this.state.activeType]: [...prevState[this.state.activeType], newItem]
     }));
     this.closeModal();
-    if (newItem.type == "menu") {
+    if (this.state.activeType == "menu") {
       return (sessionStorage["menu"] = JSON.stringify([
         ...this.state["menu"],
         newItem
       ]));
-    } else if (newItem.type == "news") {
+    } else if (this.state.activeType == "news") {
       return (sessionStorage["news"] = JSON.stringify([
         ...this.state["news"],
         newItem
@@ -71,6 +102,12 @@ class App extends React.Component {
         newItem
       ]));
     }
+  };
+
+  setActiveType = (type) => {
+    this.setState({
+      activeType: type
+    });
   };
 
   openModal = () => {
@@ -89,7 +126,8 @@ class App extends React.Component {
     const { isModalOpen } = this.state;
     const contextElements = {
       ...this.state,
-      addItem: this.addItem
+      addItem: this.addItem,
+      setActiveType: this.setActiveType
     };
     return (
       <BrowserRouter>
