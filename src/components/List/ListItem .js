@@ -3,7 +3,7 @@ import styles from "./ListItem.module.scss";
 import PropTypes from "prop-types";
 import Title from '../Title/Title'
 
-const MenuItem = ({ image, title, price, ingredients, ...props }) => {
+const ListItem = ({ image, title, price, ingredients, ...props }) => {
   const ImageTag = image ? "img" : "div";
 
   return (
@@ -25,16 +25,16 @@ const MenuItem = ({ image, title, price, ingredients, ...props }) => {
   );
 };
 
-export default MenuItem;
+export default ListItem;
 
-MenuItem.propTypes = {
+ListItem.propTypes = {
   image: PropTypes.string,
   title: PropTypes.string.isRequired,
   price: PropTypes.string,
   ingredients: PropTypes.string
 };
 
-MenuItem.defaultProps = {
+ListItem.defaultProps = {
   image: null, 
   price: null,
   ingredients: null,

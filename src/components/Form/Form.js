@@ -3,7 +3,6 @@ import styles from "./Form.module.scss";
 import Input from "../Input/Input";
 import Button from "../Button/Button";
 import Title from "../Title/Title";
-import FormRadio from "./FormRadio";
 import AppContext from "../../context";
 
 const types = {
@@ -54,36 +53,12 @@ class Form extends React.Component {
                 context.addItem(e, this.state);
               }}
             >
-              {/* <div className={styles.radioWrapper}>
-                <FormRadio
-                  id={types.menu}
-                  checked={type === types.menu}
-                  changeFn={() => this.handleRadioButtonCHange(types.menu)}
-                >
-                  Menu
-                </FormRadio>
-                <FormRadio
-                  id={types.news}
-                  checked={type === types.news}
-                  changeFn={() => this.handleRadioButtonCHange(types.news)}
-                >
-                  News
-                </FormRadio>
-                <FormRadio
-                  id={types.gallery}
-                  checked={type === types.gallery}
-                  changeFn={() => this.handleRadioButtonCHange(types.gallery)}
-                >
-                  Gallery
-                </FormRadio>
-              </div> */}
-
               <Input
                 value={this.state.title}
                 onChange={this.handleInputChange}
                 required
                 name="title"
-                label="Title"
+                label="Title*"
               />
               {context.activeType === types.menu ? (
                 <Input
@@ -91,21 +66,25 @@ class Form extends React.Component {
                   onChange={this.handleInputChange}
                   name="price"
                   required
-                  label="Price"
+                  label="Price*"
                 />
               ) : null}
               {context.activeType === types.gallery ? (
                 <Input
                   value={this.state.image}
                   onChange={this.handleInputChange}
+                  pattern="(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)"
+                  type="url"
                   required
                   name="image"
-                  label="Image"
+                  label="Image*"
                 />
               ) : (
                 <Input
                   value={this.state.image}
                   onChange={this.handleInputChange}
+                  pattern="(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)"
+                  type="url"
                   name="image"
                   label="Image"
                 />
@@ -119,7 +98,7 @@ class Form extends React.Component {
                   tag="textarea"
                   required
                   name="ingredients"
-                  label="Text"
+                  label="Text*"
                   type={this.state.type}
                 />
               ) : null}

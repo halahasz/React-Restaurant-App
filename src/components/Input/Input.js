@@ -6,7 +6,7 @@ const Input = ({ tag: Tag, name, type, label, maxLength, ...props}) => (
   <div className={styles.formItem}>
     <Tag
       className={ Tag === 'textarea' ? styles.textarea : styles.input}
-      type="text"
+      type={type}
       name={name}
       placeholder=" "
       id={name}
@@ -24,12 +24,14 @@ export default Input;
 
 Input.propTypes = {
   tag: PropTypes.string,
+  type: PropTypes.string,
   name: PropTypes.string,
   label: PropTypes.string.isRequired,
   maxLength: PropTypes.number
 };
 
 Input.defaultProps = {
+  type: "text",
   tag: "input",
   maxLength: 200
 };
