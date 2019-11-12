@@ -1,25 +1,25 @@
 import React from "react";
-import styles from "./ListItem.module.scss";
+import "./ListItem.scss";
 import PropTypes from "prop-types";
 import Title from '../Title/Title'
 
-const ListItem = ({ image, title, price, ingredients, ...props }) => {
+const ListItem = ({ image, title, price, ingredients, activeClass, ...props }) => {
   const ImageTag = image ? "img" : "div";
 
   return (
-    <li className={styles.wrapper} {...props}>
+    <li className="listWrapper" {...props}>
       <ImageTag
-        className={image ? styles.image : styles.imageNone}
+        className={image ? "listImg__"+activeClass : "imageNone"}
         src={image}
         alt={title}
       />
       <div>
         <Title>{title}</Title>
-        {price && <span className={styles.menuItem__price}>
-          <span className={styles.menuItem__dots}> . . . . . </span>
+        {price && <span className="menuItem__price">
+          <span className="menuItem__dots"> . . . . . </span>
           {price}
         </span>}
-        <p className={styles.menuItem__ingredients}>{ingredients}</p>
+        <p className="menuItem__ingredients">{ingredients}</p>
       </div>
     </li>
   );

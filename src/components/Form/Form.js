@@ -83,7 +83,7 @@ class Form extends React.Component {
                 <Input
                   value={this.state.image}
                   onChange={this.handleInputChange}
-                  pattern="(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)"
+                  pattern="(http(s?):)([/|.|\w|\s|-])*\.(?:jp(e?)g|gif|png)"
                   type="url"
                   name="image"
                   label="Image"
