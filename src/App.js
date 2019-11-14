@@ -38,20 +38,6 @@ class App extends React.Component {
   };
 
   initNews = () => {
-    const init = [
-      {
-        title: 'Creamy roasted beetroot soup with pear',
-        price: '14zl',
-        image: soupImage,
-        ingredients: 'vegan cream, toasted pumpkin seeds'
-      },
-      {
-        title: 'Herbal polenta fries',
-        price: '12zl',
-        image: friesImage,
-        ingredients: 'mayo dip'
-      },
-    ];
     const data = (() => {
       if (sessionStorage["news"] != null) {
         return JSON.parse(sessionStorage["news"]);
@@ -62,10 +48,22 @@ class App extends React.Component {
 
     this.setState({ news: data });
   };
+  initGallery = () => {
+    const data = (() => {
+      if (sessionStorage["gallery"] != null) {
+        return JSON.parse(sessionStorage["gallery"]);
+      } else {
+        return [];
+      }
+    })();
+
+    this.setState({ gallery: data });
+  };
 
   componentDidMount() {
     this.initMenu();
     this.initNews();
+    this.initGallery();
   }
 
   state = {
@@ -92,9 +90,9 @@ class App extends React.Component {
         ...this.state["news"],
         newItem
       ]));
-    } else {
+    } else if (this.state.activeType == "gallery") {
       return (sessionStorage["gallery"] = JSON.stringify([
-        ...this.state["gallery"],
+        ...this.state.gallery,
         newItem
       ]));
     }

@@ -9,7 +9,7 @@ const ListItem = ({ image, title, price, ingredients, activeClass, ...props }) =
   return (
     <li className="listWrapper" {...props}>
       <ImageTag
-        className={image ? "listImg__"+activeClass : "imageNone"}
+        className={image ? "listImg__"+activeClass : "imageNone__"+activeClass}
         src={image}
         alt={title}
       />
