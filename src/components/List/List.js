@@ -3,14 +3,14 @@ import ListItem from "./ListItem ";
 import styles from "./List.module.scss";
 import AppContex from "../../context";
 
-const List = ({ items, ...props }) => (
+const List = ({ items, activeType, ...props }) => (
   <>
     {items.length ? (
-      <ul className={styles.wrapper}>
-        {items.map(item => {
+      <ul className={activeType}>
+        {items.map((item) => {
           return (
             <AppContex.Consumer>
-              {context => (
+              {(context) => (
                 <ListItem
                   key={item.title}
                   activeClass={context.activeType}

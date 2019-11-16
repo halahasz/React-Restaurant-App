@@ -2,9 +2,9 @@ import React from 'react';
 import AppContex from '../../context'
 import List from "../../components/List/List"
 
-const GalleryPage = () => (
+const GalleryPage = ({activeType}) => (
   <AppContex.Consumer>
-    {(context) => (<List items={context.gallery} onMouseOver={() => {
+    {(context) => (<List activeType={activeType} items={context.gallery} onMouseOver={() => {
             context.setActiveType("gallery");
           }}/>)}
   </AppContex.Consumer>
