@@ -1,13 +1,17 @@
 import React from 'react';
-import AppContex from '../../context'
-import List from "../../components/List/List"
+import AppContex from '../../context';
+import List from '../../components/List/List';
 
-const NewsPage = () => (
-  <AppContex.Consumer>
-    {(context) => (<List items={context.news} onMouseOver={() => {
-            context.setActiveType("news");
-          }}/>)}
-  </AppContex.Consumer>
-);
+class NewsPage extends React.Component {
+  componentDidMount() {
+    return this.context.setActiveType('news');
+  }
+
+  render() {
+    return <List items={this.context.news} />;
+  }
+}
+
+NewsPage.contextType = AppContex;
 
 export default NewsPage;

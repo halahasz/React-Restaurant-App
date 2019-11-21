@@ -32,6 +32,7 @@
   margin-right: 30px;
   width: 150px;
   height: 150px;
+  border-radius: 5px;
 }
 .listImg__gallery {
   flex-shrink: 0;
@@ -42,13 +43,13 @@
 }
 .imageNone__menu {
   @extend .listImg__menu;
-  background: url("https://images.unsplash.com/photo-1518719161176-290f990bf5b7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1867&q=80")
+  background: url('https://images.unsplash.com/photo-1518719161176-290f990bf5b7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1867&q=80')
     no-repeat;
   background-size: cover;
 }
-.imageNone__news{
+.imageNone__news {
   @extend .listImg__news;
-  background: url("https://images.unsplash.com/photo-1518719161176-290f990bf5b7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1867&q=80")
+  background: url('https://images.unsplash.com/photo-1518719161176-290f990bf5b7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1867&q=80')
     no-repeat;
   background-size: cover;
 }

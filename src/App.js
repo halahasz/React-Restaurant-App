@@ -1,14 +1,14 @@
-import React from "react";
-import "./index.css";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
-import AppContext from "./context";
-import MenuPage from "./pages/MenuPage/MenuPage";
-import NewsPage from "./pages/NewsPage/NewsPage";
-import GalleryPage from "./pages/GalleryPage/GalleryPage";
-import Header from "./components/Header/Header";
-import Modal from "./components/Modal/Modal";
-import soupImage from "./assets/img/soup.jpg";
-import friesImage from "./assets/img/fries.jpg";
+import React from 'react';
+import './index.css';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import AppContext from './context';
+import MenuPage from './pages/MenuPage/MenuPage';
+import NewsPage from './pages/NewsPage/NewsPage';
+import GalleryPage from './pages/GalleryPage/GalleryPage';
+import Header from './components/Header/Header';
+import Modal from './components/Modal/Modal';
+import soupImage from './assets/img/soup.jpg';
+import friesImage from './assets/img/fries.jpg';
 
 class App extends React.Component {
   state = {
@@ -16,7 +16,7 @@ class App extends React.Component {
     news: [],
     gallery: [],
     isModalOpen: false,
-    activeType: ""
+    activeType: '',
   };
 
   componentDidMount() {
@@ -28,17 +28,17 @@ class App extends React.Component {
   initMenu = () => {
     const init = [
       {
-        title: "Creamy roasted beetroot soup with pear",
-        price: "14zl",
+        title: 'Creamy roasted beetroot soup with pear',
+        price: '14zl',
         image: soupImage,
-        ingredients: "vegan cream, toasted pumpkin seeds"
+        ingredients: 'vegan cream, toasted pumpkin seeds',
       },
       {
-        title: "Herbal polenta fries",
-        price: "12zl",
+        title: 'Herbal polenta fries',
+        price: '12zl',
         image: friesImage,
-        ingredients: "mayo dip"
-      }
+        ingredients: 'mayo dip',
+      },
     ];
     const data = (() => {
       if (sessionStorage.menu != null) {
@@ -76,35 +76,35 @@ class App extends React.Component {
     e.preventDefault();
     const { activeType, menu, news, gallery } = this.state;
     this.setState(prevState => ({
-      [activeType]: [...prevState[activeType], newItem]
+      [activeType]: [...prevState[activeType], newItem],
     }));
     this.closeModal();
-    if (activeType === "menu") {
+    if (activeType === 'menu') {
       sessionStorage.menu = JSON.stringify([...menu, newItem]);
     }
-    if (activeType === "news") {
+    if (activeType === 'news') {
       sessionStorage.news = JSON.stringify([...news, newItem]);
     }
-    if (activeType === "gallery") {
+    if (activeType === 'gallery') {
       sessionStorage.gallery = JSON.stringify([...gallery, newItem]);
     }
   };
 
   setActiveType = type => {
     this.setState({
-      activeType: type
+      activeType: type,
     });
   };
 
   openModal = () => {
     this.setState({
-      isModalOpen: true
+      isModalOpen: true,
     });
   };
 
   closeModal = () => {
     this.setState({
-      isModalOpen: false
+      isModalOpen: false,
     });
   };
 
@@ -113,7 +113,7 @@ class App extends React.Component {
     const contextElements = {
       ...this.state,
       addItem: this.addItem,
-      setActiveType: this.setActiveType
+      setActiveType: this.setActiveType,
     };
     return (
       <BrowserRouter>

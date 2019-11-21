@@ -1,40 +1,40 @@
-import React from "react";
-import styles from "./Form.module.scss";
-import Input from "../Input/Input";
-import Button from "../Button/Button";
-import Title from "../Title/Title";
-import AppContext from "../../context";
+import React from 'react';
+import styles from './Form.module.scss';
+import Input from '../Input/Input';
+import Button from '../Button/Button';
+import Title from '../Title/Title';
+import AppContext from '../../context';
 
 const types = {
-  menu: "menu",
-  news: "news",
-  gallery: "gallery"
+  menu: 'menu',
+  news: 'news',
+  gallery: 'gallery',
 };
 
 const descriptions = {
-  menu: "menu item",
-  news: "article",
-  gallery: "image"
+  menu: 'menu item',
+  news: 'article',
+  gallery: 'image',
 };
 
 class Form extends React.Component {
   state = {
     type: types.menu,
-    title: "",
-    price: "",
-    image: "",
-    ingredents: ""
+    title: '',
+    price: '',
+    image: '',
+    ingredents: '',
   };
 
   setType = type => {
     this.setState({
-      type: type
+      type: type,
     });
   };
 
   handleInputChange = e => {
     this.setState({
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
@@ -90,8 +90,7 @@ class Form extends React.Component {
                 />
               )}
 
-              {context.activeType !== types.gallery &&
-              context.activeType === types.news ? (
+              {context.activeType !== types.gallery && context.activeType === types.news ? (
                 <Input
                   value={this.state.ingredients}
                   onChange={this.handleInputChange}
@@ -103,8 +102,7 @@ class Form extends React.Component {
                 />
               ) : null}
 
-              {(context.activeType !== types.gallery && context.activeType) ===
-              types.menu ? (
+              {(context.activeType !== types.gallery && context.activeType) === types.menu ? (
                 <Input
                   value={this.state.ingredients}
                   onChange={this.handleInputChange}
@@ -114,7 +112,7 @@ class Form extends React.Component {
                   type={this.state.type}
                 />
               ) : null}
-              <Button>add new item</Button>
+              <Button type="submit">add new item</Button>
             </form>
           </div>
         )}

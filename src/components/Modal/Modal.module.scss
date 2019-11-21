@@ -3,6 +3,7 @@
   z-index: 10000;
   top: 50%;
   transform: translateY(-50%);
+  border-radius: 5px;
   right: 0;
   left: 0;
   margin: 0 auto;
@@ -11,28 +12,29 @@
   width: 450px;
   background: url('../../assets/img/modal_bg.jpg');
   background-size: cover;
-  box-shadow: 0 10px 40px -15px rgba(#818181, .9);
+  box-shadow: 0 10px 40px -15px rgba(#818181, 0.9);
 }
 .closeButton {
   width: 27px;
   height: 27px;
   background: #6e774a;
-  border: none; 
+  border: none;
   position: absolute;
+  border-radius: 5px;
   right: 30px;
   top: 20px;
   border: 2px solid #6e774a;
   cursor: pointer;
-  transition: all .2s ease;
+  transition: all 0.2s ease;
   &:active,
   &:focus {
     outline: none;
-    box-shadow:  0 0 5px #a8b15b;
+    box-shadow: 0 0 5px #a8b15b;
   }
   &:hover {
     background-color: transparent;
   }
-  &::before, 
+  &::before,
   &::after {
     content: '';
     width: 16px;
@@ -47,16 +49,17 @@
     bottom: 0px;
     margin: 0 auto;
     transform-origin: center;
-    transition: all .2s ease;
+    transition: all 0.2s ease;
   }
-  &:hover:after, &:hover:before {
+  &:hover:after,
+  &:hover:before {
     background: #a8b15b;
   }
-  
+
   &::before {
     transform: rotate(45deg);
   }
-  
+
   &::after {
     transform: rotate(-45deg);
   }

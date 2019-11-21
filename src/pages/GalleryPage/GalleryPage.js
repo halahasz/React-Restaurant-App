@@ -1,13 +1,17 @@
 import React from 'react';
-import AppContex from '../../context'
-import List from "../../components/List/List"
+import AppContex from '../../context';
+import List from '../../components/List/List';
 
-const GalleryPage = ({activeType}) => (
-  <AppContex.Consumer>
-    {(context) => (<List activeType={activeType} items={context.gallery} onMouseOver={() => {
-            context.setActiveType("gallery");
-          }}/>)}
-  </AppContex.Consumer>
-);
+class GalleryPage extends React.Component {
+  componentDidMount() {
+    return this.context.setActiveType('gallery');
+  }
+
+  render() {
+    return <List activeType={this.props.activeType} items={this.context.gallery} />;
+  }
+}
+
+GalleryPage.contextType = AppContex;
 
 export default GalleryPage;
