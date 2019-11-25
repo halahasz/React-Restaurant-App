@@ -19,17 +19,10 @@ const descriptions = {
 
 class Form extends React.Component {
   state = {
-    type: types.menu,
     title: '',
     price: '',
     image: '',
     ingredents: '',
-  };
-
-  setType = type => {
-    this.setState({
-      type: type,
-    });
   };
 
   handleInputChange = e => {
@@ -49,7 +42,6 @@ class Form extends React.Component {
               autoComplete="off"
               className={styles.form}
               onSubmit={e => {
-                this.setType(context.activeType);
                 context.addItem(e, this.state);
               }}
             >
@@ -73,7 +65,6 @@ class Form extends React.Component {
                 <Input
                   value={this.state.image}
                   onChange={this.handleInputChange}
-                  // pattern="(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)"
                   type="url"
                   required
                   name="image"
@@ -83,7 +74,6 @@ class Form extends React.Component {
                 <Input
                   value={this.state.image}
                   onChange={this.handleInputChange}
-                  // pattern="(http(s?):)([/|.|\w|\s|-])*\.(?:jp(e?)g|gif|png)"
                   type="url"
                   name="image"
                   label="Image"
