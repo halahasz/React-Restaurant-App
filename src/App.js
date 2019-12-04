@@ -9,6 +9,9 @@ import Header from './components/Header/Header';
 import Modal from './components/Modal/Modal';
 import soupImage from './assets/img/soup.jpg';
 import friesImage from './assets/img/fries.jpg';
+import pizzaImage from './assets/img/pizza.jpg';
+import sandwichImage from './assets/img/sandwich.jpg';
+import saladImage from './assets/img/salad.jpg';
 
 class App extends React.Component {
   state = {
@@ -62,11 +65,25 @@ class App extends React.Component {
   };
 
   initGallery = () => {
+    const init = [
+      {
+        title: 'Fresh salad',
+        image: saladImage,
+      },
+      {
+        title: 'Delicious colorful pizza',
+        image: pizzaImage,
+      },
+      {
+        title: 'Tasteful sandwiches',
+        image: sandwichImage,
+      },
+    ];
     const data = (() => {
       if (sessionStorage.gallery != null) {
         return JSON.parse(sessionStorage.gallery);
       }
-      return [];
+      return init;
     })();
 
     this.setState({ gallery: data });

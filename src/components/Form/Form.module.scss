@@ -4,7 +4,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  
+
   h2 {
     color: #6e774a;
   }
@@ -17,16 +17,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  button {
-    transition: all .2s ease;
-    &:hover {
-      background-color: #6e774a;
-      color: #e2ddda;
-    }
-  }
 }
 .radioWrapper {
   display: fles;
 }
-
-

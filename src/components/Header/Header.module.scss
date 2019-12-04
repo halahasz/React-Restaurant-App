@@ -8,6 +8,12 @@
   @media (max-width: 768px) {
     grid-template-columns: 80px 1fr 100px;
   }
+  @media (max-width: 550px) {
+    ul {
+      display: flex;
+      flex-direction: column;
+    }
+  }
   @media (max-width: 400px) {
     padding: 10px;
     ul {
